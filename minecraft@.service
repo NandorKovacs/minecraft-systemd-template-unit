@@ -6,7 +6,7 @@ After=network.target
 [Service]
 Type=forking
 # %h resolves to the user's home directory
-WorkingDirectory=%h/.local/share/minecraft/%i
+WorkingDirectory=%h/.local/share/minecraft-servers/%i
 
 # Start Command
 # -L minecraft: Uses a specific socket named 'minecraft'
