@@ -2,7 +2,7 @@ A systemd template user unit capable of basic minecraft server management, launc
 
 ## The service assumes:
 - that the minecraft server files are in .local/share/minecraft-servers
-- that .local/share/minecraft-servers/<instance>/start.sh is an executable shell script, which terminates when the minecraft server jar does
+- that .local/share/minecraft-servers/\<instance\>/start.sh is an executable shell script, which terminates when the minecraft server jar does
 - that the tmux socket "minecraft" is free
 
 ## How to install:
@@ -13,7 +13,7 @@ A systemd template user unit capable of basic minecraft server management, launc
 Start, and stop the service with systemctl as you would with any other systemd user template unit.
 Systemctl status will show the logs of the running server.
 
-Furhtermore, you can attach to the interactive shell of an instance, using tmux -L minecraft attach -t <instance>
+Furhtermore, you can attach to the interactive shell of an instance, using tmux -L minecraft attach -t \<instance\>
 
 If this tmux session dies, the service will stop automatically.
 
