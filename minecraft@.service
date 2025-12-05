@@ -1,0 +1,27 @@
+[Unit]
+Description=Minecraft Server: %i
+# Start only after the network is up
+After=network.target
+
+[Service]
+Type=forking
+# %h resolves to the user's home directory
+WorkingDirectory=%h/.local/share/minecraft/%i
+
+# Start Command
+# -L minecraft: Uses a specific socket named 'minecraft'
+# -s %i: Names the session after the instance (e.g., 'survival')
+ExecStart=/usr/bin/tmux -L minecraft new-session -s %i -d './start.sh'
+
+# Graceful Shutdown
+# We must specify -L minecraft so tmux knows which socket to talk to
+ExecStop=/usr/bin/tmux -L minecraft send-keys -t %i 'save-all' C-m
+ExecStop=/usr/bin/tmux -L minecraft send-keys -t %i 'stop' C-m
+
+TimeoutStopSec=60
+Restart=on-failure
+RestartSec=30s
+
+[Install]
+# specific to user services; starts when the user's slice starts
+WantedBy=default.target
