@@ -9,7 +9,7 @@ Type=simple
 
 WorkingDirectory=%h/.local/share/minecraft-servers/%i
 
-ExecStart=/home/nandor/mc-wrapper.sh %i
+ExecStart=/usr/libexec/mc-wrapper.sh %i
 
 ExecStop=/usr/bin/tmux -L minecraft send-keys -t %i 'save-all' C-m
 ExecStop=/usr/bin/tmux -L minecraft send-keys -t %i 'stop' C-m
